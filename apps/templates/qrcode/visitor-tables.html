@@ -1,0 +1,76 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} UI Tables {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+        <div class="row">           
+            <div class="col-md-12">
+              <div class="card card-plain">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title mt-0"> Table on Plain Background</h4>
+                  <p class="card-category"> Here is a subtitle for this table</p>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead class=" text-primary">
+                        <th>
+                          First Name
+                        </th>
+                        <th>
+                          Last Name
+                        </th>
+                        <th>
+                          Gender
+                        </th>                       
+                        <th>
+                          Phone
+                        </th>
+                        <th>
+                          Note
+                        </th>
+                        <th></th>
+                      </thead>
+                      {% for row in rows %}
+                      <thead class="">                      
+                        <th>
+                          {{ row.firstname }}
+                        </th>
+                        <th>
+                          {{ row.lastname }}
+                        </th>
+                        <th>
+                          {{ row.get_gender_display }}
+                        </th>
+                        <th>
+                          {{ row.phone }}
+                        </th>
+                        <th>
+                          {{ row.notes }}
+                        </th>
+                        <th class="td-actions text-right">
+                          <a class="nav-link" href="{% url 'qrcode_detail' row.id %}">
+                            <i class="material-icons">qr_code_2</i>                           
+                          </a>
+                          <a class="nav-link" href="{% url 'qrcode_detail' row.id %}">
+                            <i class="material-icons">edit</i>                           
+                          </a>
+                        
+                        </th>
+                      </thead>
+                      {% endfor %}
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

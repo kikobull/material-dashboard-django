@@ -9,8 +9,9 @@ class Visitors(models.Model):
     lastname = models.CharField(max_length=50)
     gender = models.CharField(max_length=2, choices=GenderChoice)
     notes = models.CharField(max_length=400,null=True)
-    phone = models.CharField(max_length=20)
-    photo = models.BinaryField()
+    phone = models.CharField(max_length=20,null=True)
+    photo = models.BinaryField(null=True)
+    email = models.CharField(max_length=100,null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
 class QRcodes(models.Model):

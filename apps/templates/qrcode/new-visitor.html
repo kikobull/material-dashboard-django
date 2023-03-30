@@ -1,0 +1,100 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} New Visitor {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+  <div class="row">
+    <div class="col-md-5">
+      <div class="card">
+        <div class="card-header card-header-primary">
+          <h4 class="card-title">
+            Create Visitor Account
+          </h4>
+        </div>
+        <div class="card-body">
+
+          <h6 class="card-category">
+           
+          </h6>
+          
+          <br />
+
+          {% if message %}
+              <div class="alert alert-warning">{{ message }}</div>
+          {% endif %}
+
+         
+            <form role="form" method="post" action="{% url 'new_visitor' %}">
+                
+              {% csrf_token %} 
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">First Name</label>
+                    {{ visitor_form.firstname }}
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Last Name</label>
+                    {{ visitor_form.lastname }}
+                  </div>
+                </div>
+              </div>
+           
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Gender</label>
+                    {{ visitor_form.gender }}
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Phone</label>
+                    {{ visitor_form.phone }}
+                  </div>
+                </div>
+              </div>
+             
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Email</label>
+                    {{ visitor_form.email }}
+                  </div>
+                </div>              
+              </div>
+             
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Notes</label>
+                    {{ visitor_form.notes }}
+                  </div>
+                </div>
+              </div>
+            
+
+              <button type="submit" name="create" class="btn btn-primary pull-left">Create</button>
+
+              &nbsp; &nbsp;              
+
+              <div class="clearfix"></div>
+
+            </form>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
